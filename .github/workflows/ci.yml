@@ -50,14 +50,16 @@ jobs:
 
       - run: npm ci
 
-      - run: npx ng build ngx-exhaustive-check
+      - run: |
+          npx ng build ngx-exhaustive-check
+          cp README.md dist/ngx-exhaustive-check
 
       - uses: JS-DevTools/npm-publish@v3
         if: github.ref_name == 'main'
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
-          package: ./projects/ngx-exhaustive-check/package.json
+          package: ./dist/ngx-exhaustive-check
           tag: latest
           access: public
           strategy: upgrade

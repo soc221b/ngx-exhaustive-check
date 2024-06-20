@@ -1,27 +1,117 @@
 # NgxExhaustiveCheck
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+## Installation
 
-## Development server
+```sh
+$ npm install ngx-exhaustive-check --save
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Usage
 
-## Code scaffolding
+Compile successfully:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```ts
+import { EcPipe } from "ngx-exhaustive-check";
 
-## Build
+@Component({
+  imports: [EcPipe],
+  // ..
+})
+export class AppComponent {
+  foo: "foo" = "foo";
+}
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+@switch (foo) {
+  @case ("foo") {}
+  @default {
+    <div>{{ foo | ec }}</div>
+  }
+}
+```
 
-## Running unit tests
+Compile failed:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```ts
+import { EcPipe } from "ngx-exhaustive-check";
 
-## Running end-to-end tests
+@Component({
+  imports: [EcPipe],
+  // ..
+})
+export class AppComponent {
+  fooBar: "foo" | "bar" = "foo";
+}
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+@switch (fooBar) {
+  @case ("foo") {}
+  @default {
+    <div>{{ fooBar | ec }}</div>
+       <!-- ^^^^^^ Argument of type 'string' is not assignable to parameter of type 'never'.ngtsc(2345) -->
+  }
+}
+```
 
-## Further help
+## Advanced Usage
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Compile successfully:
+
+```ts
+import { EcPipe } from "ngx-exhaustive-check";
+
+enum Answer {
+  Yes,
+  No,
+}
+
+@Component({
+  imports: [EcPipe],
+  // ..
+})
+export class AppComponent {
+  answer: Answer = Answer.Yes;
+  Answer = Answer;
+}
+```
+
+```
+@switch (answer) {
+  @case (Answer.Yes) {}
+  @default {
+    <div>{{ answer | ec: Answer.No }}</div>
+  }
+}
+```
+
+Compile failed:
+
+```ts
+import { EcPipe } from "ngx-exhaustive-check";
+
+enum Answer {
+  Yes,
+  No,
+}
+
+@Component({
+  imports: [EcPipe],
+  // ..
+})
+export class AppComponent {
+  answer: Answer = Answer.Yes;
+  Answer = Answer;
+}
+```
+
+```
+@switch (answer) {
+  @case (Answer.Yes) {}
+  @default {
+    <div>{{ answer | ec }}</div>
+       <!-- ^^^^^^ Argument of type 'Answer' is not assignable to parameter of type 'never'.ngtsc(2345) -->
+  }
+}
+```

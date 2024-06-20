@@ -1,13 +1,22 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { EcPipe } from '../../../ngx-exhaustive-check/src/lib/ec.pipe';
+
+enum Answer {
+  Yes,
+  No,
+}
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  imports: [EcPipe],
 })
 export class AppComponent {
-  title = 'demo';
+  never: never = 'never' as never;
+  undefined: undefined = undefined;
+  null: null = null;
+  foo: 'foo' = 'foo';
+  answer: Answer = Answer.Yes;
+  Answer = Answer;
 }

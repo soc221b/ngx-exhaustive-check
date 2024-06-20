@@ -1,0 +1,79 @@
+name: CI
+
+on:
+  - push
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - run: npm ci
+
+      - run: npx prettier --check .
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - run: npm ci
+
+      - run: |
+          npx ng test --watch=false --browsers=ChromeHeadless
+          npx ng build demo
+
+  build:
+    runs-on: ubuntu-latest
+
+    needs:
+      - format
+      - test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - run: npm ci
+
+      - run: npx ng build ngx-exhaustive-check
+
+      - uses: JS-DevTools/npm-publish@v3
+        if: github.ref_name == 'main'
+        id: publish
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: ./projects/ngx-exhaustive-check/package.json
+          tag: latest
+          access: public
+          strategy: upgrade
+          dry-run: true
+
+      - uses: anothrNick/github-tag-action@v1
+        if: github.ref_name == 'main' && steps.publish.outputs.type
+        env:
+          CUSTOM_TAG: ${{ steps.publish.outputs.version }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          DRY_RUN: true
+
+      - uses: softprops/action-gh-release@v2
+        if: github.ref_name == 'main' && steps.publish.outputs.type
+        with:
+          tag_name: ${{ steps.publish.outputs.version }}
+          body: "Changelog: https://github.com/soc221b/ngx-exhaustive-check/blob/${{ steps.publish.outputs.version }}/CHANGELOG.md"
+          draft: true

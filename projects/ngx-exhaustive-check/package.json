@@ -1,6 +1,7 @@
 {
   "name": "ngx-exhaustive-check",
   "version": "0.2.0",
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "*",
     "@angular/core": "*"

@@ -16,7 +16,7 @@
 @switch (answer) {
   @case (Answer.Yes) {}
   @default {
-    <div>{{ answer | ec: Answer.No }}</div>
+    <div>{{ answer | ec: Answer.No : Answer.Maybe }}</div>
   }
 }
 

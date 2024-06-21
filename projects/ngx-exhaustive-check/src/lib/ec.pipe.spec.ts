@@ -19,7 +19,7 @@ describe('EcPipe', () => {
     const pipe = new EcPipe();
     const value = undefined;
 
-    const result = pipe.transform(value, undefined);
+    const result = pipe.transform(value, [undefined]);
 
     expect(result).toBe(value);
   });
@@ -28,7 +28,7 @@ describe('EcPipe', () => {
     const pipe = new EcPipe();
     const value = null;
 
-    const result = pipe.transform(value, null);
+    const result = pipe.transform(value, [null]);
 
     expect(result).toBe(value);
   });
@@ -37,7 +37,7 @@ describe('EcPipe', () => {
     const pipe = new EcPipe();
     const value = null as undefined | null;
 
-    const result = pipe.transform(value, undefined, null);
+    const result = pipe.transform(value, [undefined, null]);
 
     expect(result).toBe(value);
   });
@@ -47,7 +47,7 @@ describe('EcPipe', () => {
     const value = null as undefined | null;
 
     // @ts-expect-error
-    const result = pipe.transform(value, undefined);
+    const result = pipe.transform(value, [undefined]);
 
     expect(result).toBe(value);
   });

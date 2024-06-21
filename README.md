@@ -85,7 +85,7 @@ export class AppComponent {
 @switch (answer) {
   @case (Answer.Yes) {}
   @default {
-    <div>{{ answer | ec: Answer.No : Answer.Maybe }}</div>
+    <div>{{ answer | ec: [Answer.No, Answer.Maybe] }}</div>
   }
 }
 ```
@@ -115,7 +115,7 @@ export class AppComponent {
 @switch (answer) {
   @case (Answer.Yes) {}
   @default {
-    <div>{{ answer | ec: Answer.No }}</div>
+    <div>{{ answer | ec: [Answer.No] }}</div>
        <!-- ^^^^^^ Argument of type 'Answer' is not assignable to parameter of type 'never'. Type 'Answer' is not assignable to type 'never'.ngtsc(2345) -->
   }
 }

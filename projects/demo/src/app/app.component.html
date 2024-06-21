@@ -1,22 +1,21 @@
 <div data-never>{{ never | ec }}</div>
-<div>{{ undefined | ec: undefined }}</div>
-<div>{{ null | ec: null }}</div>
+<div>{{ undefined | ec: [undefined] }}</div>
+<div>{{ null | ec: [null] }}</div>
 @switch (foo) {
   @default {
-    <div>{{ foo | ec: foo }}</div>
+    <div>{{ foo | ec: [foo] }}</div>
   }
 }
 @switch (foo) {
   @case ("foo") {}
   @default {
     <div>{{ foo | ec }}</div>
-    <div>{{ foo | ec: never }}</div>
   }
 }
 @switch (answer) {
   @case (Answer.Yes) {}
   @default {
-    <div>{{ answer | ec: Answer.No : Answer.Maybe }}</div>
+    <div>{{ answer | ec: [Answer.No, Answer.Maybe] }}</div>
   }
 }
 

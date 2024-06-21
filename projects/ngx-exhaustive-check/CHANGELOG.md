@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/soc221b/ngx-exhaustive-check/compare/0.2.1...v0.3.0) (2024-06-21)
+
+
+### Features
+
+* work with any union type ([9adb85f](https://github.com/soc221b/ngx-exhaustive-check/commit/9adb85f46db4787a356999365d6ca09a1b084037))
+
 ## [0.2.0](https://github.com/soc221b/ngx-exhaustive-check/compare/0.1.1...v0.2.0) (2024-06-21)
 
 

@@ -4,6 +4,7 @@ import { EcPipe } from '../../../ngx-exhaustive-check/src/lib/ec.pipe';
 enum Answer {
   Yes,
   No,
+  Maybe,
 }
 
 @Component({

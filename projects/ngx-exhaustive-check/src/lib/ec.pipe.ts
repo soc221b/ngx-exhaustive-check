@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class EcPipe implements PipeTransform {
   transform<T, const U extends any[] = never[]>(
-    value: TypeEqual<T, U[number]> extends true ? T : never,
+    value: TypeEqual<T, U[number]> extends true ? T : U[number],
     _expected: U = [] as unknown as U,
   ): never {
     return value as never;

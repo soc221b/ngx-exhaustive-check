@@ -17,7 +17,6 @@ export class AppComponent {
   never: never = 'never' as never;
   undefined: undefined = undefined;
   null: null = null;
-  foo: 'foo' = 'foo';
   answer: Answer = Answer.Yes;
   Answer = Answer;
 }

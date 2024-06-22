@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/soc221b/ngx-exhaustive-check/compare/0.3.0...v0.3.1) (2024-06-22)
+
+
+### Bug Fixes
+
+* better error message ([a10683a](https://github.com/soc221b/ngx-exhaustive-check/commit/a10683aa842585b88e8289ba1401e9f8924cdada))
+
 ## [0.3.0](https://github.com/soc221b/ngx-exhaustive-check/compare/0.2.1...v0.3.0) (2024-06-21)
 
 

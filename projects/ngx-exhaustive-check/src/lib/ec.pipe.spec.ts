@@ -42,6 +42,16 @@ describe('EcPipe', () => {
     expect(result).toBe(value);
   });
 
+  it('should do exhaustive check', () => {
+    const pipe = new EcPipe();
+    const value = undefined;
+
+    // @ts-expect-error
+    const result = pipe.transform(value);
+
+    expect(result).toBe(value);
+  });
+
   it('should fail when parameters are missing', () => {
     const pipe = new EcPipe();
     const value = null as undefined | null;

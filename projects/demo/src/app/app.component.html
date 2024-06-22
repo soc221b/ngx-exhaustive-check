@@ -18,15 +18,3 @@
     <div>{{ answer | ec: [Answer.No, Answer.Maybe] }}</div>
   }
 }
-
-<!-- TODO: https://github.com/angular/angular/issues/39397 -->
-@switch (foo) {
-  @default {
-    <!-- @ts-expect-error -->
-    <!-- <div data-foo>{{ foo | ec }}</div> -->
-    <!-- @ts-expect-error -->
-    <!-- <div data-foo>{{ foo | ec: undefined }}</div> -->
-    <!-- @ts-expect-error -->
-    <!-- <div data-foo>{{ foo | ec: null }}</div> -->
-  }
-}

@@ -1,5 +1,7 @@
 # NgxExhaustiveCheck
 
+Angular utility for ensuring exhaustive checks on TypeScript discriminated unions, enhancing type safety and reliability.
+
 ## Installation
 
 ```sh
@@ -8,21 +10,29 @@ $ npm install ngx-exhaustive-check --save
 
 ## Usage
 
-> The following example only works with `typescript@^5.0.0`.
-> See [const-type-parameters](https://devblogs.microsoft.com/typescript/announcing-typescript-5-0-beta/#const-type-parameters#const-type-parameters) for more details.
+### Before
 
-```ts
-import { EcPipe } from "ngx-exhaustive-check";
+Without an exhaustive check, the code may compile successfully, but this can lead to runtime errors:
+
+```diff
+import { Component } from '@angular/core';
 
 enum Answer {
   Yes,
   No,
-  Maybe,
++ Maybe,
 }
 
 @Component({
-  imports: [EcPipe],
-  // ..
+  selector: 'app-root',
+  standalone: true,
+  template: `
+    @switch (answer) {
+      @case (Answer.Yes) {}
+      @case (Answer.No) {}
+      @default {}
+    }
+  `,
 })
 export class AppComponent {
   answer: Answer = Answer.Yes;
@@ -30,34 +40,77 @@ export class AppComponent {
 }
 ```
 
-Compile successfully:
+### After
 
+With an exhaustive check, the compilation will fail, making your code more reliable:
+
+```diff
+import { Component } from '@angular/core';
++ import { EcPipe } from '../../../ngx-exhaustive-check/src/lib/ec.pipe';
+
+enum Answer {
+  Yes,
+  No,
++ Maybe,
+}
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
++ imports: [EcPipe],
+  template: `
+    @switch (answer) {
+      @case (Answer.Yes) {}
+      @case (Answer.No) {}
+      @default {
++       {{ answer | ec }}
+   <!--    ^^^^^^ Argument of type 'Answer' is not assignable to parameter of type 'never'. -->
+      }
+    }
+  `,
+})
+export class AppComponent {
+  answer: Answer = Answer.Yes;
+  Answer = Answer;
+}
 ```
+
+## Advanced usage
+
+Sometimes, if you just want to ignore some cases, you can do this:
+
+```diff
+enum Answer {
+  Yes,
+  No,
++ NoOp1,
++ NoOp2,
+}
+```
+
+```diff
 @switch (answer) {
   @case (Answer.Yes) {}
   @case (Answer.No) {}
-  @case (Answer.Maybe) {}
++ @case (Answer.NoOp1) {}
++ @case (Answer.NoOp2) {}
   @default {
-    <div>{{ answer | ec }}</div>
+    {{ answer | ec }}
   }
 }
+```
 
+With ngx-exhaustive-check, you can achieve this by passing the `satisfies` parameter as well:
+
+```diff
 @switch (answer) {
   @case (Answer.Yes) {}
+  @case (Answer.No) {}
   @default {
-    <div>{{ answer | ec: [Answer.No, Answer.Maybe] }}</div>
+-   {{ answer | ec }}
++   {{ answer | ec: [Answer.NoOp1, Answer.NoOp2] }}
   }
 }
 ```
 
-Compile failed:
-
-```
-@switch (answer) {
-  @case (Answer.Yes) {}
-  @default {
-    <div>{{ answer | ec: [Answer.No] }}</div>
-    <!--    ^^^^^^ Argument of type 'Answer.No | Answer.Maybe' is not assignable to parameter of type 'Answer.No'. -->
-  }
-}
-```
+This is useful when you want to apply the same action to these cases.

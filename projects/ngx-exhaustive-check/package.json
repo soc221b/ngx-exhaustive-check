@@ -2,6 +2,23 @@
   "name": "ngx-exhaustive-check",
   "version": "0.3.1",
   "license": "MIT",
+  "description": "Angular utility for ensuring exhaustive checks on TypeScript discriminated unions, enhancing type safety and reliability.",
+  "author": "Ernest <>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soc221b/ngx-exhaustive-check.git"
+  },
+  "bugs": {
+    "url": "https://github.com/soc221b/ngx-exhaustive-check/issues"
+  },
+  "homepage": "https://github.com/soc221b/ngx-exhaustive-check#readme",
+  "keywords": [
+    "angular",
+    "typescript",
+    "pipe",
+    "switch",
+    "control flow"
+  ],
   "peerDependencies": {
     "@angular/common": "*",
     "@angular/core": "*"

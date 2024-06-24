@@ -46,7 +46,7 @@ With an exhaustive check, the compilation will fail, making your code more relia
 
 ```diff
 import { Component } from '@angular/core';
-+ import { EcPipe } from '../../../ngx-exhaustive-check/src/lib/ec.pipe';
++ import { ExhaustiveCheckPipe } from 'ngx-exhaustive-check';
 
 enum Answer {
   Yes,
@@ -57,13 +57,13 @@ enum Answer {
 @Component({
   selector: 'app-root',
   standalone: true,
-+ imports: [EcPipe],
++ imports: [ExhaustiveCheckPipe],
   template: `
     @switch (answer) {
       @case (Answer.Yes) {}
       @case (Answer.No) {}
       @default {
-+       {{ answer | ec }}
++       {{ answer | exhaustiveCheck }}
    <!--    ^^^^^^ Argument of type 'Answer' is not assignable to parameter of type 'never'. -->
       }
     }
@@ -95,7 +95,7 @@ enum Answer {
 + @case (Answer.NoOp1) {}
 + @case (Answer.NoOp2) {}
   @default {
-    {{ answer | ec }}
+    {{ answer | exhaustiveCheck }}
   }
 }
 ```
@@ -107,8 +107,8 @@ With ngx-exhaustive-check, you can achieve this by passing the `satisfies` param
   @case (Answer.Yes) {}
   @case (Answer.No) {}
   @default {
--   {{ answer | ec }}
-+   {{ answer | ec: [Answer.NoOp1, Answer.NoOp2] }}
+-   {{ answer | exhaustiveCheck }}
++   {{ answer | exhaustiveCheck: [Answer.NoOp1, Answer.NoOp2] }}
   }
 }
 ```

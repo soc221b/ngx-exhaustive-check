@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EcPipe } from '../../../ngx-exhaustive-check/src/lib/ec.pipe';
+import { ExhaustiveCheckPipe } from '../../../ngx-exhaustive-check/src/lib/exhaustive-check.pipe';
 
 enum Answer {
   Yes,
@@ -11,7 +11,7 @@ enum Answer {
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
-  imports: [EcPipe],
+  imports: [ExhaustiveCheckPipe],
 })
 export class AppComponent {
   never: never = 'never' as never;

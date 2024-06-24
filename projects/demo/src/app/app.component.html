@@ -1,21 +1,21 @@
-<div data-never>{{ never | ec }}</div>
+<div data-never>{{ never | exhaustiveCheck }}</div>
 
-<div>{{ undefined | ec: [undefined] }}</div>
+<div>{{ undefined | exhaustiveCheck: [undefined] }}</div>
 
-<div>{{ null | ec: [null] }}</div>
+<div>{{ null | exhaustiveCheck: [null] }}</div>
 
 @switch (answer) {
   @case (Answer.Yes) {}
   @case (Answer.No) {}
   @case (Answer.Maybe) {}
   @default {
-    <div>{{ answer | ec }}</div>
+    <div>{{ answer | exhaustiveCheck }}</div>
   }
 }
 @switch (answer) {
   @case (Answer.Yes) {}
   @default {
-    <div>{{ answer | ec: [Answer.No, Answer.Maybe] }}</div>
+    <div>{{ answer | exhaustiveCheck: [Answer.No, Answer.Maybe] }}</div>
   }
 }
 
@@ -24,6 +24,6 @@
   @default {
     <!-- https://github.com/angular/angular/issues/39397 -->
     <!-- @ts-expect-error -->
-    <!-- <div>{{ answer | ec: [Answer.No] }}</div> -->
+    <!-- <div>{{ answer | exhaustiveCheck: [Answer.No] }}</div> -->
   }
 }

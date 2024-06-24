@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'ec',
+  name: 'exhaustiveCheck',
   standalone: true,
   pure: true,
 })
-export class EcPipe implements PipeTransform {
+export class ExhaustiveCheckPipe implements PipeTransform {
   transform<T, const U extends any[] = never[]>(
     value: TypeEqual<T, U[number]> extends true ? T : U[number],
     satisfies: U = [] as unknown as U,

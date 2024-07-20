@@ -18,3 +18,4 @@ jobs:
           token: ${{ secrets.RELEASE_PLEASE }}
           release-type: node
           path: projects/ngx-exhaustive-check
+          skip-github-release: true

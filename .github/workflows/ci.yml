@@ -53,7 +53,7 @@ jobs:
 
       - run: |
           npx ng build ngx-exhaustive-check
-          cp README.md dist/ngx-exhaustive-check
+          echo "# NgxExhaustiveCheck\n\nThe sources for this package are in the main [ngx-exhaustive-check](https://github.com/soc221b/ngx-exhaustive-check) repo. Please file issues and pull requests against that repo.\n\nLicense: MIT" > "dist/ngx-exhaustive-check/README.md"
 
       - uses: JS-DevTools/npm-publish@v3
         if: github.ref_name == 'main'

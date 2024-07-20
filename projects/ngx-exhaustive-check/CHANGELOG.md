@@ -1,5 +1,16 @@
 # Changelog
 
+## [18.0.0](https://github.com/soc221b/ngx-exhaustive-check/compare/17.0.0...v18.0.0) (2024-07-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update angular monorepo to v18 (major) ([#36](https://github.com/soc221b/ngx-exhaustive-check/issues/36))
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v18 (major) ([#36](https://github.com/soc221b/ngx-exhaustive-check/issues/36)) ([721938f](https://github.com/soc221b/ngx-exhaustive-check/commit/721938f357cfaf424cb795001b7bd4ca8ff6a23e))
+
 ## [17.0.0](https://github.com/soc221b/ngx-exhaustive-check/compare/1.0.0...v17.0.0) (2024-07-20)
 
 

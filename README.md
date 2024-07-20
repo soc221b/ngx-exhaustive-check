@@ -5,7 +5,7 @@ Angular utility for ensuring exhaustive checks on TypeScript discriminated union
 ## Installation
 
 ```sh
-$ npm install ngx-exhaustive-check --save
+$ npm install ngx-exhaustive-check
 ```
 
 ## Usage

@@ -1,11 +1,7 @@
 # Changelog
 
-## [2.0.0](https://github.com/soc221b/ngx-exhaustive-check/compare/1.0.0...v2.0.0) (2024-07-20)
+## [17.0.0](https://github.com/soc221b/ngx-exhaustive-check/compare/1.0.0...v17.0.0) (2024-07-20)
 
-
-### ⚠ BREAKING CHANGES
-
-* pin supported versions ([#33](https://github.com/soc221b/ngx-exhaustive-check/issues/33))
 
 ### Bug Fixes
 

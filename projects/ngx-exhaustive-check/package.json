@@ -1,6 +1,6 @@
 {
   "name": "ngx-exhaustive-check",
-  "version": "17.0.0",
+  "version": "18.0.0",
   "license": "MIT",
   "description": "Angular utility for ensuring exhaustive checks on TypeScript discriminated unions, enhancing type safety and reliability.",
   "author": "Ernest <>",

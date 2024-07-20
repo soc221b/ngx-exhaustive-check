@@ -32,6 +32,7 @@ jobs:
 
       - run: |
           npx ng test --watch=false --browsers=ChromeHeadless
+          npx ng test demo --watch=false --browsers=ChromeHeadless
           npx ng build demo
 
   build:

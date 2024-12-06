@@ -9,7 +9,6 @@ enum Answer {
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   templateUrl: './app.component.html',
   imports: [ExhaustiveCheckPipe],
 })

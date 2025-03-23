@@ -61,4 +61,14 @@ describe('ExhaustiveCheckPipe', () => {
 
     expect(result).toBe(value);
   });
+
+  it('should fail when parameters are invalid', () => {
+    const pipe = new ExhaustiveCheckPipe();
+    const value = null as undefined | null;
+
+    // @ts-expect-error
+    const result = pipe.transform(value, undefined);
+
+    expect(result).toBe(value);
+  });
 });

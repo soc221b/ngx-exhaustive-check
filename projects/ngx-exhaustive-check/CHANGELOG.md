@@ -1,5 +1,12 @@
 # Changelog
 
+## [17.0.1](https://github.com/soc221b/ngx-exhaustive-check/compare/17.0.0...v17.0.1) (2025-03-23)
+
+
+### Bug Fixes
+
+* should fail when parameters are invalid ([#155](https://github.com/soc221b/ngx-exhaustive-check/issues/155)) ([3d2ca35](https://github.com/soc221b/ngx-exhaustive-check/commit/3d2ca355b3d0725f3eddee8699f3d1072465d2f1))
+
 ## [17.0.0](https://github.com/soc221b/ngx-exhaustive-check/compare/1.0.0...v17.0.0) (2024-07-20)
 
 

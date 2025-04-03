@@ -1,4 +1,5 @@
 import { ExhaustiveCheckPipe } from './exhaustive-check.pipe';
+import { expectTypeOf } from 'expect-type';
 
 describe('ExhaustiveCheckPipe', () => {
   it('create an instance', () => {
@@ -13,6 +14,7 @@ describe('ExhaustiveCheckPipe', () => {
     const result = pipe.transform(value);
 
     expect(result).toBe(value);
+    expectTypeOf(result).toEqualTypeOf<typeof value>();
   });
 
   it('works with undefined', () => {
@@ -22,6 +24,7 @@ describe('ExhaustiveCheckPipe', () => {
     const result = pipe.transform(value, [undefined]);
 
     expect(result).toBe(value);
+    expectTypeOf(result).toEqualTypeOf<typeof value>();
   });
 
   it('works with null', () => {
@@ -31,15 +34,17 @@ describe('ExhaustiveCheckPipe', () => {
     const result = pipe.transform(value, [null]);
 
     expect(result).toBe(value);
+    expectTypeOf(result).toEqualTypeOf<typeof value>();
   });
 
   it('works with unions', () => {
     const pipe = new ExhaustiveCheckPipe();
-    const value = null as undefined | null;
+    const value = undefined as undefined | null;
 
     const result = pipe.transform(value, [undefined, null]);
 
     expect(result).toBe(value);
+    expectTypeOf(result).toEqualTypeOf<typeof value>();
   });
 
   it('should do exhaustive check', () => {
@@ -54,7 +59,7 @@ describe('ExhaustiveCheckPipe', () => {
 
   it('should fail when parameters are missing', () => {
     const pipe = new ExhaustiveCheckPipe();
-    const value = null as undefined | null;
+    const value = undefined as undefined | null;
 
     // @ts-expect-error
     const result = pipe.transform(value, [undefined]);
@@ -64,7 +69,7 @@ describe('ExhaustiveCheckPipe', () => {
 
   it('should fail when parameters are invalid', () => {
     const pipe = new ExhaustiveCheckPipe();
-    const value = null as undefined | null;
+    const value = undefined as undefined | null;
 
     // @ts-expect-error
     const result = pipe.transform(value, undefined);

@@ -9,10 +9,10 @@ export class ExhaustiveCheckPipe implements PipeTransform {
   transform<T, const U extends any[] = never[]>(
     value: TypeEqual<T, U[number]> extends true ? T : U[number],
     satisfies: U,
-  ): never;
+  ): T;
   transform<T, const U extends never[] = never[]>(
     value: TypeEqual<T, U[number]> extends true ? T : U[number],
-  ): never;
+  ): T;
   transform(...args: unknown[]): unknown {
     return args[0];
   }

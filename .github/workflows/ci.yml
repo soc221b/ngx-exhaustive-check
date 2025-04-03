@@ -60,7 +60,7 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ./dist/ngx-exhaustive-check
-          tag: latest
+          tag: v17-lts
           access: public
           strategy: upgrade
 

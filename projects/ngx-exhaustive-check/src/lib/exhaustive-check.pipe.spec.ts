@@ -47,6 +47,17 @@ describe('ExhaustiveCheckPipe', () => {
     expectTypeOf(result).toEqualTypeOf<typeof value>();
   });
 
+  it('works with readonly', () => {
+    const pipe = new ExhaustiveCheckPipe();
+    const value = undefined as undefined | null;
+
+    const satisfy = [undefined, null] as const;
+    const result = pipe.transform(value, satisfy);
+
+    expect(result).toBe(value);
+    expectTypeOf(result).toEqualTypeOf<typeof value>();
+  });
+
   it('should do exhaustive check', () => {
     const pipe = new ExhaustiveCheckPipe();
     const value = undefined;
@@ -57,6 +68,21 @@ describe('ExhaustiveCheckPipe', () => {
     );
 
     expect(result).toBe(value);
+  });
+
+  it('should do exhaustive check with readonly', () => {
+    const pipe = new ExhaustiveCheckPipe();
+    const value = undefined as undefined | null;
+
+    const satisfy = [undefined] as const;
+    const result = pipe.transform(
+      // @ts-expect-error
+      value,
+      satisfy,
+    );
+
+    expect(result).toBe(value);
+    expectTypeOf(result).toEqualTypeOf<typeof value>();
   });
 
   it('should fail when parameters are missing', () => {

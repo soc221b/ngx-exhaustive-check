@@ -6,13 +6,13 @@ import { Pipe, PipeTransform } from '@angular/core';
   pure: true,
 })
 export class ExhaustiveCheckPipe implements PipeTransform {
-  transform<T, const U extends any[] = never[]>(
+  transform<T, const U extends readonly any[] = never[]>(
     value: TypeEqual<T, U[number]> extends true ? T : U[number],
     satisfies: TypeEqual<T, U[number]> extends true
       ? U
       : Extract<U[number], T>[],
   ): T;
-  transform<T, const U extends never[] = never[]>(
+  transform<T, const U extends readonly any[] = never[]>(
     value: TypeEqual<T, U[number]> extends true ? T : U[number],
   ): T;
   transform(...args: unknown[]): unknown {

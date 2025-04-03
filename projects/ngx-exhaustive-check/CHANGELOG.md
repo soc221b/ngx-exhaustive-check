@@ -1,5 +1,13 @@
 # Changelog
 
+## [19.0.2](https://github.com/soc221b/ngx-exhaustive-check/compare/19.0.1...v19.0.2) (2025-04-03)
+
+
+### Bug Fixes
+
+* it should fail when satisfies are excessive ([#166](https://github.com/soc221b/ngx-exhaustive-check/issues/166)) ([23d6636](https://github.com/soc221b/ngx-exhaustive-check/commit/23d6636fa586411b21764131be92bfb04c4632c5))
+* return type should be the type of the value ([#164](https://github.com/soc221b/ngx-exhaustive-check/issues/164)) ([148bfed](https://github.com/soc221b/ngx-exhaustive-check/commit/148bfed527fa37d1c0c48864e07b4f4795adc42e))
+
 ## [19.0.1](https://github.com/soc221b/ngx-exhaustive-check/compare/19.0.0...v19.0.1) (2025-03-23)
 
 

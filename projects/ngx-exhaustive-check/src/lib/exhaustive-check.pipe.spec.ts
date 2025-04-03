@@ -39,7 +39,7 @@ describe('ExhaustiveCheckPipe', () => {
 
   it('works with unions', () => {
     const pipe = new ExhaustiveCheckPipe();
-    const value = null as undefined | null;
+    const value = undefined as undefined | null;
 
     const result = pipe.transform(value, [undefined, null]);
 
@@ -59,7 +59,7 @@ describe('ExhaustiveCheckPipe', () => {
 
   it('should fail when parameters are missing', () => {
     const pipe = new ExhaustiveCheckPipe();
-    const value = null as undefined | null;
+    const value = undefined as undefined | null;
 
     // @ts-expect-error
     const result = pipe.transform(value, [undefined]);
@@ -69,7 +69,7 @@ describe('ExhaustiveCheckPipe', () => {
 
   it('should fail when parameters are invalid', () => {
     const pipe = new ExhaustiveCheckPipe();
-    const value = null as undefined | null;
+    const value = undefined as undefined | null;
 
     // @ts-expect-error
     const result = pipe.transform(value, undefined);

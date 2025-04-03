@@ -8,7 +8,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ExhaustiveCheckPipe implements PipeTransform {
   transform<T, const U extends any[] = never[]>(
     value: TypeEqual<T, U[number]> extends true ? T : U[number],
-    satisfies: U,
+    satisfies: TypeEqual<T, U[number]> extends true
+      ? U
+      : Extract<U[number], T>[],
   ): T;
   transform<T, const U extends never[] = never[]>(
     value: TypeEqual<T, U[number]> extends true ? T : U[number],

@@ -64,7 +64,7 @@ enum Answer {
       @case (Answer.No) {}
       @default {
 +       {{ answer | exhaustiveCheck }}
-   <!--    ^^^^^^ Argument of type 'Answer' is not assignable to parameter of type 'never'. -->
+   <!--    ^^^^^^ Argument of type 'Answer.Maybe' is not assignable to parameter of type 'never'. -->
       }
     }
   `,

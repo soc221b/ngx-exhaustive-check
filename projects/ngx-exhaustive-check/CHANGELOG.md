@@ -1,5 +1,12 @@
 # Changelog
 
+## [19.0.3](https://github.com/soc221b/ngx-exhaustive-check/compare/v19.0.2...v19.0.3) (2025-04-03)
+
+
+### Bug Fixes
+
+* it should work with readonly ([#167](https://github.com/soc221b/ngx-exhaustive-check/issues/167)) ([f2b16ee](https://github.com/soc221b/ngx-exhaustive-check/commit/f2b16ee53d5ac2a5a4a4c87520e272db2a930337))
+
 ## [19.0.2](https://github.com/soc221b/ngx-exhaustive-check/compare/19.0.1...v19.0.2) (2025-04-03)
 
 

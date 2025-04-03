@@ -1,4 +1,5 @@
 import { ExhaustiveCheckPipe } from './exhaustive-check.pipe';
+import { expectTypeOf } from 'expect-type';
 
 describe('ExhaustiveCheckPipe', () => {
   it('create an instance', () => {
@@ -13,6 +14,7 @@ describe('ExhaustiveCheckPipe', () => {
     const result = pipe.transform(value);
 
     expect(result).toBe(value);
+    expectTypeOf(result).toEqualTypeOf<typeof value>();
   });
 
   it('works with undefined', () => {
@@ -22,6 +24,7 @@ describe('ExhaustiveCheckPipe', () => {
     const result = pipe.transform(value, [undefined]);
 
     expect(result).toBe(value);
+    expectTypeOf(result).toEqualTypeOf<typeof value>();
   });
 
   it('works with null', () => {
@@ -31,6 +34,7 @@ describe('ExhaustiveCheckPipe', () => {
     const result = pipe.transform(value, [null]);
 
     expect(result).toBe(value);
+    expectTypeOf(result).toEqualTypeOf<typeof value>();
   });
 
   it('works with unions', () => {
@@ -40,6 +44,7 @@ describe('ExhaustiveCheckPipe', () => {
     const result = pipe.transform(value, [undefined, null]);
 
     expect(result).toBe(value);
+    expectTypeOf(result).toEqualTypeOf<typeof value>();
   });
 
   it('should do exhaustive check', () => {

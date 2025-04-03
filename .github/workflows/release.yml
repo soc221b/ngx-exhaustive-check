@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - 18
 
 permissions:
   contents: write
@@ -19,3 +19,4 @@ jobs:
           release-type: node
           path: projects/ngx-exhaustive-check
           skip-github-release: true
+          target-branch: 18

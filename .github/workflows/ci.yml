@@ -56,7 +56,7 @@ jobs:
           cp README.md dist/ngx-exhaustive-check
 
       - uses: JS-DevTools/npm-publish@v3
-        if: github.ref_name == 'main'
+        if: github.ref_name == '18'
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
@@ -66,14 +66,14 @@ jobs:
           strategy: upgrade
 
       - uses: anothrNick/github-tag-action@v1
-        if: github.ref_name == 'main' && steps.publish.outputs.type
+        if: github.ref_name == '18' && steps.publish.outputs.type
         env:
           CUSTOM_TAG: ${{ steps.publish.outputs.version }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
 
       - uses: softprops/action-gh-release@v2
-        if: github.ref_name == 'main' && steps.publish.outputs.type
+        if: github.ref_name == '18' && steps.publish.outputs.type
         with:
           tag_name: ${{ steps.publish.outputs.version }}
           body: "Changelog: https://github.com/soc221b/ngx-exhaustive-check/blob/${{ steps.publish.outputs.version }}/projects/ngx-exhaustive-check/CHANGELOG.md"

@@ -51,8 +51,10 @@ describe('ExhaustiveCheckPipe', () => {
     const pipe = new ExhaustiveCheckPipe();
     const value = undefined;
 
-    // @ts-expect-error
-    const result = pipe.transform(value);
+    const result = pipe.transform(
+      // @ts-expect-error
+      value,
+    );
 
     expect(result).toBe(value);
   });
@@ -61,8 +63,11 @@ describe('ExhaustiveCheckPipe', () => {
     const pipe = new ExhaustiveCheckPipe();
     const value = undefined as undefined | null;
 
-    // @ts-expect-error
-    const result = pipe.transform(value, [undefined]);
+    const result = pipe.transform(
+      // @ts-expect-error
+      value,
+      [undefined],
+    );
 
     expect(result).toBe(value);
   });
@@ -71,8 +76,11 @@ describe('ExhaustiveCheckPipe', () => {
     const pipe = new ExhaustiveCheckPipe();
     const value = undefined as undefined | null;
 
-    // @ts-expect-error
-    const result = pipe.transform(value, undefined);
+    const result = pipe.transform(
+      value,
+      // @ts-expect-error
+      undefined,
+    );
 
     expect(result).toBe(value);
   });

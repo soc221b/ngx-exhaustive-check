@@ -76,4 +76,18 @@ describe('ExhaustiveCheckPipe', () => {
 
     expect(result).toBe(value);
   });
+
+  it('should fail when satisfies are excessive', () => {
+    const pipe = new ExhaustiveCheckPipe();
+    const value = undefined as undefined | null;
+
+    const result = pipe.transform(value, [
+      undefined,
+      null,
+      // @ts-expect-error
+      0,
+    ]);
+
+    expect(result).toBe(value);
+  });
 });

@@ -2,7 +2,7 @@ import { ExhaustiveCheckPipe } from './exhaustive-check.pipe';
 import { expectTypeOf } from 'expect-type';
 
 describe('ExhaustiveCheckPipe', () => {
-  it('create an instance', () => {
+  it('creates an instance', () => {
     const pipe = new ExhaustiveCheckPipe();
     expect(pipe).toBeTruthy();
   });
@@ -49,16 +49,15 @@ describe('ExhaustiveCheckPipe', () => {
 
   it('works with readonly', () => {
     const pipe = new ExhaustiveCheckPipe();
-    const value = undefined as undefined | null;
+    const value = undefined;
 
-    const satisfy = [undefined, null] as const;
-    const result = pipe.transform(value, satisfy);
+    const result = pipe.transform(value, [undefined] as readonly [undefined]);
 
     expect(result).toBe(value);
     expectTypeOf(result).toEqualTypeOf<typeof value>();
   });
 
-  it('should do exhaustive check', () => {
+  it('should do exhaustive check with undefined', () => {
     const pipe = new ExhaustiveCheckPipe();
     const value = undefined;
 
@@ -70,22 +69,7 @@ describe('ExhaustiveCheckPipe', () => {
     expect(result).toBe(value);
   });
 
-  it('should do exhaustive check with readonly', () => {
-    const pipe = new ExhaustiveCheckPipe();
-    const value = undefined as undefined | null;
-
-    const satisfy = [undefined] as const;
-    const result = pipe.transform(
-      // @ts-expect-error
-      value,
-      satisfy,
-    );
-
-    expect(result).toBe(value);
-    expectTypeOf(result).toEqualTypeOf<typeof value>();
-  });
-
-  it('should fail when parameters are missing', () => {
+  it('should do exhaustive check with unions', () => {
     const pipe = new ExhaustiveCheckPipe();
     const value = undefined as undefined | null;
 
@@ -93,6 +77,33 @@ describe('ExhaustiveCheckPipe', () => {
       // @ts-expect-error
       value,
       [undefined],
+    );
+
+    expect(result).toBe(value);
+  });
+
+  it('should do exhaustive check with readonly', () => {
+    const pipe = new ExhaustiveCheckPipe();
+    const value = undefined as undefined | null;
+
+    const result = pipe.transform(
+      // @ts-expect-error
+      value,
+      [undefined] as readonly [undefined],
+    );
+
+    expect(result).toBe(value);
+    expectTypeOf(result).toEqualTypeOf<typeof value>();
+  });
+
+  it('should do exhaustive check using const-like inference', () => {
+    const pipe = new ExhaustiveCheckPipe();
+    const value = 1 as 1 | 2;
+
+    const result = pipe.transform(
+      // @ts-expect-error
+      value,
+      [1],
     );
 
     expect(result).toBe(value);

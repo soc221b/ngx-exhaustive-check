@@ -57,7 +57,7 @@ describe('ExhaustiveCheckPipe', () => {
     expectTypeOf(result).toEqualTypeOf<typeof value>();
   });
 
-  it('should do exhaustive check', () => {
+  it('should do exhaustive check with undefined', () => {
     const pipe = new ExhaustiveCheckPipe();
     const value = undefined;
 

@@ -49,10 +49,9 @@ describe('ExhaustiveCheckPipe', () => {
 
   it('works with readonly', () => {
     const pipe = new ExhaustiveCheckPipe();
-    const value = undefined as undefined | null;
+    const value = undefined;
 
-    const satisfy = [undefined, null] as const;
-    const result = pipe.transform(value, satisfy);
+    const result = pipe.transform(value, [undefined] as readonly [undefined]);
 
     expect(result).toBe(value);
     expectTypeOf(result).toEqualTypeOf<typeof value>();
@@ -74,11 +73,10 @@ describe('ExhaustiveCheckPipe', () => {
     const pipe = new ExhaustiveCheckPipe();
     const value = undefined as undefined | null;
 
-    const satisfy = [undefined] as const;
     const result = pipe.transform(
       // @ts-expect-error
       value,
-      satisfy,
+      [undefined] as readonly [undefined],
     );
 
     expect(result).toBe(value);

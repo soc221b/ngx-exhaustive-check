@@ -69,6 +69,19 @@ describe('ExhaustiveCheckPipe', () => {
     expect(result).toBe(value);
   });
 
+  it('should do exhaustive check with unions', () => {
+    const pipe = new ExhaustiveCheckPipe();
+    const value = undefined as undefined | null;
+
+    const result = pipe.transform(
+      // @ts-expect-error
+      value,
+      [undefined],
+    );
+
+    expect(result).toBe(value);
+  });
+
   it('should do exhaustive check with readonly', () => {
     const pipe = new ExhaustiveCheckPipe();
     const value = undefined as undefined | null;
@@ -81,19 +94,6 @@ describe('ExhaustiveCheckPipe', () => {
 
     expect(result).toBe(value);
     expectTypeOf(result).toEqualTypeOf<typeof value>();
-  });
-
-  it('should fail when parameters are missing', () => {
-    const pipe = new ExhaustiveCheckPipe();
-    const value = undefined as undefined | null;
-
-    const result = pipe.transform(
-      // @ts-expect-error
-      value,
-      [undefined],
-    );
-
-    expect(result).toBe(value);
   });
 
   it('should fail when parameters are invalid', () => {

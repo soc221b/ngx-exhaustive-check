@@ -12,9 +12,7 @@ export class ExhaustiveCheckPipe implements PipeTransform {
       ? U
       : Extract<U[number], T>[],
   ): T;
-  transform<T, const U extends readonly any[] = never[]>(
-    value: TypeEqual<T, U[number]> extends true ? T : U[number],
-  ): T;
+  transform<T>(value: T extends never ? T : never): T;
   transform(...args: unknown[]): unknown {
     return args[0];
   }

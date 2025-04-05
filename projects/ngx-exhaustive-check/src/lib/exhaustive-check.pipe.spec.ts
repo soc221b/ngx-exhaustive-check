@@ -2,7 +2,7 @@ import { ExhaustiveCheckPipe } from './exhaustive-check.pipe';
 import { expectTypeOf } from 'expect-type';
 
 describe('ExhaustiveCheckPipe', () => {
-  it('create an instance', () => {
+  it('creates an instance', () => {
     const pipe = new ExhaustiveCheckPipe();
     expect(pipe).toBeTruthy();
   });

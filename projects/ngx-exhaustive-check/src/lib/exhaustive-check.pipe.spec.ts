@@ -96,6 +96,19 @@ describe('ExhaustiveCheckPipe', () => {
     expectTypeOf(result).toEqualTypeOf<typeof value>();
   });
 
+  it('should do exhaustive check using const-like inference', () => {
+    const pipe = new ExhaustiveCheckPipe();
+    const value = 1 as 1 | 2;
+
+    const result = pipe.transform(
+      // @ts-expect-error
+      value,
+      [1],
+    );
+
+    expect(result).toBe(value);
+  });
+
   it('should fail when parameters are invalid', () => {
     const pipe = new ExhaustiveCheckPipe();
     const value = undefined as undefined | null;

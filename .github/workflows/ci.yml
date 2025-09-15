@@ -53,7 +53,7 @@ jobs:
 
       - run: npx ng build ngx-exhaustive-check
 
-      - uses: JS-DevTools/npm-publish@v3
+      - uses: JS-DevTools/npm-publish@v4
         if: github.ref_name == 'main'
         id: publish
         with:

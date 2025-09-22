@@ -1,5 +1,12 @@
 # Changelog
 
+## [19.0.4](https://github.com/soc221b/ngx-exhaustive-check/compare/v19.0.3...v19.0.4) (2025-09-22)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([#243](https://github.com/soc221b/ngx-exhaustive-check/issues/243)) ([9fcc9da](https://github.com/soc221b/ngx-exhaustive-check/commit/9fcc9dafc396be022dcf32efa068222309dcdc00))
+
 ## [19.0.3](https://github.com/soc221b/ngx-exhaustive-check/compare/v19.0.2...v19.0.3) (2025-04-03)
 
 

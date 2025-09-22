@@ -1,5 +1,16 @@
 # Changelog
 
+## [20.0.0](https://github.com/soc221b/ngx-exhaustive-check/compare/v19.0.4...v20.0.0) (2025-09-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update angular monorepo to v20 (major) ([#245](https://github.com/soc221b/ngx-exhaustive-check/issues/245))
+
+### Bug Fixes
+
+* **deps:** update angular monorepo to v20 (major) ([#245](https://github.com/soc221b/ngx-exhaustive-check/issues/245)) ([444771c](https://github.com/soc221b/ngx-exhaustive-check/commit/444771c6511194a40af9b50b62f597ee8330ac9e))
+
 ## [19.0.4](https://github.com/soc221b/ngx-exhaustive-check/compare/v19.0.3...v19.0.4) (2025-09-22)
 
 

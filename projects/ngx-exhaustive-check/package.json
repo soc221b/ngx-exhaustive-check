@@ -3,7 +3,7 @@
   "version": "19.0.4",
   "license": "MIT",
   "description": "Angular utility for ensuring exhaustive checks on TypeScript discriminated unions, enhancing type safety and reliability.",
-  "author": "Ernest <>",
+  "author": "Ernest <soc221b.e@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/soc221b/ngx-exhaustive-check.git"
@@ -20,8 +20,8 @@
     "control flow"
   ],
   "peerDependencies": {
-    "@angular/common": "^19.0.0",
-    "@angular/core": "^19.0.0"
+    "@angular/common": ">=20.0.0",
+    "@angular/core": ">=20.0.0"
   },
   "dependencies": {
     "tslib": "2.8.1"

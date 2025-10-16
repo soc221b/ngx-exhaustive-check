@@ -26,7 +26,7 @@
     "@angular/build": "20.3.6",
     "@angular/cli": "20.3.6",
     "@angular/compiler-cli": "20.3.5",
-    "@types/jasmine": "5.1.10",
+    "@types/jasmine": "5.1.11",
     "chokidar": "4.0.3",
     "expect-type": "1.2.2",
     "jasmine-core": "5.12.0",

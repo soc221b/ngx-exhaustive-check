@@ -27,7 +27,7 @@
     "@angular/cli": "20.3.12",
     "@angular/compiler-cli": "20.3.12",
     "@types/jasmine": "5.1.13",
-    "chokidar": "4.0.3",
+    "chokidar": "5.0.0",
     "expect-type": "1.2.2",
     "jasmine-core": "5.12.1",
     "karma": "6.4.4",

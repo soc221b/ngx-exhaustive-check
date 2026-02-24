@@ -23,8 +23,8 @@
     "zone.js": "0.15.1"
   },
   "devDependencies": {
-    "@angular/build": "20.3.17",
-    "@angular/cli": "20.3.17",
+    "@angular/build": "21.1.5",
+    "@angular/cli": "21.1.5",
     "@angular/compiler-cli": "20.3.12",
     "@types/jasmine": "6.0.0",
     "chokidar": "5.0.0",
